@@ -1,7 +1,7 @@
 package br.com.bhut.cars.Cars.controller;
 
-import br.com.bhut.cars.Cars.model.dto.CarsDTO;
-import br.com.bhut.cars.Cars.service.CarsService;
+import br.com.bhut.cars.Cars.dto.CarsDTO;
+import br.com.bhut.cars.Cars.client.ClientCarsGet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/todos")
 public class CarsController {
 
-    private CarsService carsService;
+    private ClientCarsGet clientCarsGet;
 
     @Autowired
-    public CarsController(CarsService carsService) {
-        this.carsService = carsService;
+    public CarsController(ClientCarsGet clientCarsGet) {
+        this.clientCarsGet = clientCarsGet;
     }
 
-    @GetMapping("/{cars}")
-    public List<CarsDTO> findAll (@PathVariable String cars) {
-        return carsService.getCars(cars);
+    @GetMapping
+    public List<CarsDTO> findAll () {
+        return clientCarsGet.getCars();
     }
 
 }
