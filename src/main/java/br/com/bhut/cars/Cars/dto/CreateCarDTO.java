@@ -13,11 +13,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder(toBuilder = true)
-public class CarsDTO {
+public class CreateCarDTO {
 
-    private String _id;
     private String title;
     private String brand;
     private String price;
     private int age;
+
 }
