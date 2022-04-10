@@ -28,7 +28,7 @@ public class CarsController {
 
     @GetMapping("/cars")
     public List<CarsDTO> findAll() {
-        return clientCarsGet.getCars();
+        return clientCarsGet.listCars();
     }
 
     @PostMapping("/cars")

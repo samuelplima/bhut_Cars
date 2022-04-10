@@ -11,6 +11,6 @@ import java.util.List;
 public interface ClientCarsGet {
 
     @GetMapping("api/cars")
-    List<CarsDTO> getCars();
+    List<CarsDTO> listCars();
 
 }
