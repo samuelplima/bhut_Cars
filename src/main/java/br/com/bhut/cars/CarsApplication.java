@@ -1,4 +1,4 @@
-package br.com.bhut.cars.Cars;
+package br.com.bhut.cars;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package br.com.bhut.cars.Cars;
+package br.com.bhut.cars;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

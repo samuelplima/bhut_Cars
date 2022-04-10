@@ -1,4 +1,4 @@
-package br.com.bhut.cars.Cars.dto;
+package br.com.bhut.cars.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

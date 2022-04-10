@@ -1,10 +1,8 @@
-package br.com.bhut.cars.Cars.client;
+package br.com.bhut.cars.client;
 
-import br.com.bhut.cars.Cars.dto.CarsDTO;
+import br.com.bhut.cars.dto.CarsDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 

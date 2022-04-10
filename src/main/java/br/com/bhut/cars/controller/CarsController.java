@@ -1,12 +1,11 @@
-package br.com.bhut.cars.Cars.controller;
+package br.com.bhut.cars.controller;
 
-import br.com.bhut.cars.Cars.client.ClientCarsPost;
-import br.com.bhut.cars.Cars.dto.CarsDTO;
-import br.com.bhut.cars.Cars.client.ClientCarsGet;
-import br.com.bhut.cars.Cars.dto.CreateCarDTO;
+import br.com.bhut.cars.client.ClientCarsPost;
+import br.com.bhut.cars.dto.CarsDTO;
+import br.com.bhut.cars.client.ClientCarsGet;
+import br.com.bhut.cars.dto.CreateCarDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
