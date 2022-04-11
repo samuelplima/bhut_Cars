@@ -1,17 +1,16 @@
 package br.com.bhut.cars.service.imlp;
 
-import br.com.bhut.cars.dto.CarsDTO;
 import br.com.bhut.cars.dto.CreateCarDTO;
 import br.com.bhut.cars.dto.LogsDTO;
 import br.com.bhut.cars.entities.Logs;
 import br.com.bhut.cars.repository.LogsRepository;
 import br.com.bhut.cars.service.LogsService;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LogsServiceImpl implements LogsService {
@@ -38,4 +37,20 @@ public class LogsServiceImpl implements LogsService {
 
         return logsDTO;
     }
+
+    @Override
+    public List<LogsDTO> findAll() {
+        List<Logs> logsList;
+        logsList = logsRepository.findAll();
+        return logsList
+                .stream()
+                .map(logsDTO -> getLogsDTO(logsDTO))
+                .collect(Collectors.toList());
+    }
+
+    private LogsDTO getLogsDTO(Logs logs) {
+        return new LogsDTO(logs.getId(), logs.getData_hora(), logs.getCar_id());
+    }
+
+
 }
