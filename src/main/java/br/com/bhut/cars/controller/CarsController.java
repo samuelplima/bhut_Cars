@@ -42,13 +42,8 @@ public class CarsController {
 
     @PostMapping("/cars")
     public CreateCarDTO createCar(@RequestBody CreateCarDTO createCarDTO) {
-
-        LogsDTO logsDTO = new LogsDTO();
-
         CreateCarDTO createdCar = clientCarsPost.createCar(createCarDTO);
-
-        logsService.createLog(createdCar, logsDTO);
-
+        logsService.createLog(createdCar);
         return createdCar;
     }
 

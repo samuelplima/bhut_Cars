@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface LogsService {
 
-    LogsDTO createLog(CreateCarDTO createCarDTO, LogsDTO logsDTO);
+    LogsDTO createLog(CreateCarDTO createCarDTO);
 
     List<LogsDTO> findAll();
 

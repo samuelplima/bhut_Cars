@@ -23,9 +23,10 @@ public class LogsServiceImpl implements LogsService {
     }
 
     @Override
-    public LogsDTO createLog(CreateCarDTO createCarDTO, LogsDTO logsDTO) {
+    public LogsDTO createLog(CreateCarDTO createCarDTO) {
         Logs logs = new Logs();
         Date date = new Date();
+        LogsDTO logsDTO = new LogsDTO();
 
         logs.setCar_id(createCarDTO.getTitle());
         logs.setData_hora(new Date(date.getTime()));
