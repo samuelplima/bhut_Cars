@@ -3,6 +3,7 @@ package br.com.bhut.cars.service.imlp;
 import br.com.bhut.cars.dto.CreateCarDTO;
 import br.com.bhut.cars.dto.LogsDTO;
 import br.com.bhut.cars.entities.Logs;
+import br.com.bhut.cars.rabbit.QueueSender;
 import br.com.bhut.cars.repository.LogsRepository;
 import br.com.bhut.cars.service.LogsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ import java.util.stream.Collectors;
 public class LogsServiceImpl implements LogsService {
 
     private LogsRepository logsRepository;
+    private QueueSender queueSender;
 
     @Autowired
-    public LogsServiceImpl(LogsRepository logsRepository) {
+    public LogsServiceImpl(LogsRepository logsRepository, QueueSender queueSender) {
         this.logsRepository = logsRepository;
+        this.queueSender =  queueSender;
     }
 
     @Override
@@ -33,8 +36,11 @@ public class LogsServiceImpl implements LogsService {
 
         Logs savedLogs = logsRepository.save(logs);
 
+        logsDTO.setId(savedLogs.getId());
         logsDTO.setCarId(savedLogs.getCar_id());
         logsDTO.setDataHora(savedLogs.getData_hora());
+
+        queueSender.send(logsDTO);
 
         return logsDTO;
     }

@@ -28,14 +28,12 @@ public class CarsController {
     private ClientCarsGet clientCarsGet;
     private ClientCarsPost clientCarsPost;
     private LogsService logsService;
-    private QueueSender queueSender;
 
     @Autowired
     public CarsController(ClientCarsGet clientCarsGet, ClientCarsPost clientCarsPost, LogsService logsService, QueueSender queueSender) {
         this.clientCarsGet = clientCarsGet;
         this.clientCarsPost = clientCarsPost;
         this.logsService = logsService;
-        this.queueSender =  queueSender;
     }
 
     @GetMapping("/cars")
@@ -46,8 +44,7 @@ public class CarsController {
     @PostMapping("/cars")
     public CreateCarDTO createCar(@RequestBody CreateCarDTO createCarDTO) {
         CreateCarDTO createdCar = clientCarsPost.createCar(createCarDTO);
-        LogsDTO logsDTO = logsService.createLog(createdCar);
-        queueSender.send(logsDTO);
+        logsService.createLog(createdCar);
         return createdCar;
     }
 
