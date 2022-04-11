@@ -5,6 +5,7 @@ import br.com.bhut.cars.dto.CarsDTO;
 import br.com.bhut.cars.client.ClientCarsGet;
 import br.com.bhut.cars.dto.CreateCarDTO;
 import br.com.bhut.cars.dto.LogsDTO;
+import br.com.bhut.cars.rabbit.QueueSender;
 import br.com.bhut.cars.service.LogsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,14 @@ public class CarsController {
     private ClientCarsGet clientCarsGet;
     private ClientCarsPost clientCarsPost;
     private LogsService logsService;
+    private QueueSender queueSender;
 
     @Autowired
-    public CarsController(ClientCarsGet clientCarsGet, ClientCarsPost clientCarsPost, LogsService logsService) {
+    public CarsController(ClientCarsGet clientCarsGet, ClientCarsPost clientCarsPost, LogsService logsService, QueueSender queueSender) {
         this.clientCarsGet = clientCarsGet;
         this.clientCarsPost = clientCarsPost;
         this.logsService = logsService;
+        this.queueSender =  queueSender;
     }
 
     @GetMapping("/cars")
@@ -43,7 +46,8 @@ public class CarsController {
     @PostMapping("/cars")
     public CreateCarDTO createCar(@RequestBody CreateCarDTO createCarDTO) {
         CreateCarDTO createdCar = clientCarsPost.createCar(createCarDTO);
-        logsService.createLog(createdCar);
+        LogsDTO logsDTO = logsService.createLog(createdCar);
+        queueSender.send(logsDTO);
         return createdCar;
     }
 
