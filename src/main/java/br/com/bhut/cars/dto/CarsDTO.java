@@ -15,9 +15,14 @@ import lombok.Setter;
 @Builder(toBuilder = true)
 public class CarsDTO {
 
+    public CarsDTO(CreateCarDTO car) {
+    }
+
     private String _id;
     private String title;
     private String brand;
     private String price;
     private int age;
+
+
 }

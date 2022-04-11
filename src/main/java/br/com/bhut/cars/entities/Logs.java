@@ -1,11 +1,13 @@
 package br.com.bhut.cars.entities;
 
+import br.com.bhut.cars.dto.LogsDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,13 +28,19 @@ import java.util.Date;
 @Table(name = "LOGS")
 public class Logs {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Logs(LogsDTO logsDTO) {
+    }
+
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "ID", nullable = false)
     private String id;
 
+    @Column
     private Date data_hora;
 
+    @Column
     private String car_id;
+
 
 }
