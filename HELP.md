@@ -34,7 +34,7 @@ Após compilar e rodar o programa a aplicação irá subir na porta  8080
 
 
 - Essa url é se encontra no site webhookrelay:
-- https://bin.webhookrelay.com/v1/webhooks/b91107ff-9580-4eee-a188-856afbe9128e
+- https://my.webhookrelay.com/
 
 ## 4 - Banco de dados
 
