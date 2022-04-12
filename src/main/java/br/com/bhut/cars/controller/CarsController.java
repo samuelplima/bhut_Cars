@@ -4,8 +4,6 @@ import br.com.bhut.cars.client.ClientCarsPost;
 import br.com.bhut.cars.dto.CarsDTO;
 import br.com.bhut.cars.client.ClientCarsGet;
 import br.com.bhut.cars.dto.CreateCarDTO;
-import br.com.bhut.cars.dto.LogsDTO;
-import br.com.bhut.cars.rabbit.QueueSender;
 import br.com.bhut.cars.service.LogsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,7 +27,7 @@ public class CarsController {
     private LogsService logsService;
 
     @Autowired
-    public CarsController(ClientCarsGet clientCarsGet, ClientCarsPost clientCarsPost, LogsService logsService, QueueSender queueSender) {
+    public CarsController(ClientCarsGet clientCarsGet, ClientCarsPost clientCarsPost, LogsService logsService) {
         this.clientCarsGet = clientCarsGet;
         this.clientCarsPost = clientCarsPost;
         this.logsService = logsService;
