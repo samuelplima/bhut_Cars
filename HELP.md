@@ -30,11 +30,18 @@ Após compilar e rodar o programa a aplicação irá subir na porta  8080
 
 ## 3 - A fila será consumida e enviará um webhook para a seguinte url
 
-- https://bin.webhookrelay.com/v1/webhooks/b91107ff-9580-4eee-a188-856afbe9128e
+- https://vsibuy2y128jbxidmooi7o.hooks.webhookrelay.com
 
 
-- Essa url é se encontra no site webhookrelay:
+- Essa url se encontra no site webhookrelay e para acessar seguem as credenciais:
 - https://my.webhookrelay.com/
+- usuario: samuel
+- senha: teste1234
+
+
+- após logar para visualizar as msgs
+- clicar request forwarding
+- request logs
 
 ## 4 - Banco de dados
 
